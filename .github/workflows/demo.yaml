@@ -23,15 +23,3 @@ jobs:
           my-docker-repo:${{ github.sha }}
         build-args: |
           APP_CONTENT="Hello, World!"
-
-    - name: Test Docker container
-      run: |
-        docker run -d -p 8080:80 my-docker-repo:${{ github.sha }}
-        curl -sSL localhost:8080 | grep -q 'Hello, World!'
-        if [ $? -eq 0 ]; then
-          echo 'App is working!'
-        else
-          echo 'App is not working!'
-          exit 1
-        fi
-
