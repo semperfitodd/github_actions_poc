@@ -29,6 +29,7 @@ jobs:
 
     - name: Test Docker container
       run: |
+        curl localhost:8080
         curl -sSL localhost:8080 | grep -q 'Hello, World!'
         if [ $? -eq 0 ]; then
           echo 'App is working!'
